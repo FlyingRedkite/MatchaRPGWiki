@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Matcha Flavoured – Guide complet sans spoil</title>
+<title>Matcha RPG Wiki – Guide complet sans spoil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 header.top{max-width:900px;margin:0 auto;padding:22px 16px 8px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
 header.top div{flex:1;min-width:240px}
 h1{font-family:var(--pixel);font-weight:600;font-size:clamp(2rem,8vw,3rem);line-height:1;margin:0;color:var(--matcha);text-shadow:3px 3px 0 var(--frame)}
+.ver{font-size:.9rem;color:var(--muted);text-shadow:none;vertical-align:middle;margin-left:6px}
 .sub{margin:8px 0 0;color:var(--muted);font-size:.95rem;max-width:62ch}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:3px solid var(--frame)}
 .tabs{max-width:900px;margin:0 auto;display:flex;gap:4px;padding:8px 12px;overflow-x:auto}
@@ -99,8 +100,8 @@ footer{max-width:900px;margin:0 auto;padding:0 16px 30px;font-size:.82rem;color:
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Matcha Flavoured</h1>
-<p class="sub">Guide complet généré à partir du datapack et du resource pack 1.12.2, plus les mods Wizards, Paladins, Archers, Spell Engine, Spell Power, Skill Tree (série RPG) et Waystones : succès, recettes, cuisine, équipement, magie, échanges et pêche. Tout ce qui pourrait te spoiler reste caché jusqu'à ce que tu le touches.</p></div>
+<header class="top"><div><h1>Matcha RPG Wiki <span class="ver" title="Version du wiki">v{{VERSION}}</span></h1>
+<p class="sub">Wiki de fan pour le datapack Matcha Flavoured et sa série de mods RPG. Guide complet généré à partir du datapack et du resource pack 1.12.2, plus les mods Wizards, Paladins, Archers, Spell Engine, Spell Power, Skill Tree (série RPG) et Waystones : succès, recettes, cuisine, équipement, magie, échanges et pêche. Tout ce qui pourrait te spoiler reste caché jusqu'à ce que tu le touches.</p></div>
 <div class="topbtns"><button class="btn" id="langBtn">Noms : FR</button><button class="btn" id="revealAll" aria-pressed="false">Tout dévoiler</button></div></header>
 <nav><div class="tabs" role="tablist">
 <button role="tab" aria-selected="true" data-tab="tree">Progression</button>
@@ -251,7 +252,7 @@ footer{max-width:900px;margin:0 auto;padding:0 16px 30px;font-size:.82rem;color:
  <div class="gl" id="glossary"></div>
 </section>
 </main>
-<footer>Généré à partir du datapack et du resource pack Matcha Flavoured 1.12.2 de Klei Wright (CC BY-NC-SA 4.0), et des mods Wizards 3.1.3, Spell Engine 1.10.9, Spell Power 1.6.2, Skill Tree RPGs 1.6.2, Paladins 3.1.3, Archers 3.1.3 et Waystones 26.2.0.12. Pour aller plus loin : la <a href="https://www.youtube.com/watch?v=zyRH8W58fRI&amp;t=1007s" target="_blank" rel="noopener">vidéo de présentation de Matcha Flavoured par Klei Wright (YouTube)</a> et le <a href="https://matchaflavoured.wiki/" target="_blank" rel="noopener">wiki Matcha Flavoured</a>. Textures : resource pack Matcha Flavoured, mods et Minecraft 26.2. Quelques objets vanilla rarement utilisés (surtout de la déco) restent en anglais.</footer>
+<footer>Matcha RPG Wiki v{{VERSION}} ({{DATE}}). Généré à partir du datapack et du resource pack Matcha Flavoured 1.12.2 de Klei Wright (CC BY-NC-SA 4.0), et des mods Wizards 3.1.3, Spell Engine 1.10.9, Spell Power 1.6.2, Skill Tree RPGs 1.6.2, Paladins 3.1.3, Archers 3.1.3 et Waystones 26.2.0.12. Pour aller plus loin : la <a href="https://www.youtube.com/watch?v=zyRH8W58fRI&amp;t=1007s" target="_blank" rel="noopener">vidéo de présentation de Matcha Flavoured par Klei Wright (YouTube)</a> et le <a href="https://matchaflavoured.wiki/" target="_blank" rel="noopener">wiki Matcha Flavoured</a>. Textures : resource pack Matcha Flavoured, mods et Minecraft 26.2. Quelques objets vanilla rarement utilisés (surtout de la déco) restent en anglais.</footer>
 <div id="scrim" class="scrim" hidden></div>
 <div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden></div>
 <script>window.__DATA__=/*DATA*/null;</script>

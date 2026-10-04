@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matcha Flavoured – Guide complet sans spoil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#e6ebd6;--bg2:#d9e0c4;--panel:#f5f7ec;--ink:#23301a;--muted:#5f6b52;--matcha:#5c8a2a;--matcha-soft:#c7d9a3;--line:#9aa889;--gold:#b98a14;--gold-bg:#f3e2a6;--heart:#c0392b;--frame:#3b4a2c;--locked:#b9c1a8;
+  --pixel:"Pixelify Sans","Courier New",monospace;--body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c2316;--bg2:#232c1b;--panel:#2a3420;--ink:#e9eedd;--muted:#a3ae92;--matcha:#9cc45c;--matcha-soft:#3c4d29;--line:#56633f;--gold:#e8c14e;--gold-bg:#4a3f17;--heart:#e5534b;--frame:#0f140b;--locked:#3a4430;}}
+:root[data-theme="dark"]{--bg:#1c2316;--bg2:#232c1b;--panel:#2a3420;--ink:#e9eedd;--muted:#a3ae92;--matcha:#9cc45c;--matcha-soft:#3c4d29;--line:#56633f;--gold:#e8c14e;--gold-bg:#4a3f17;--heart:#e5534b;--frame:#0f140b;--locked:#3a4430;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;background-image:linear-gradient(var(--bg2) 1px,transparent 1px),linear-gradient(90deg,var(--bg2) 1px,transparent 1px);background-size:16px 16px}
+header.top{max-width:900px;margin:0 auto;padding:22px 16px 8px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+header.top div{flex:1;min-width:240px}
+h1{font-family:var(--pixel);font-weight:600;font-size:clamp(2rem,8vw,3rem);line-height:1;margin:0;color:var(--matcha);text-shadow:3px 3px 0 var(--frame)}
+.sub{margin:8px 0 0;color:var(--muted);font-size:.95rem;max-width:62ch}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:3px solid var(--frame)}
+.tabs{max-width:900px;margin:0 auto;display:flex;gap:4px;padding:8px 12px;overflow-x:auto}
+.tabs button,.btn,.chip{font-family:var(--pixel);font-size:.95rem;border:3px solid var(--frame);background:var(--panel);color:var(--ink);padding:6px 10px;cursor:pointer;white-space:nowrap;box-shadow:inset -3px -3px 0 rgba(0,0,0,.15)}
+.tabs button[aria-selected="true"],.chip.on{background:var(--matcha);color:#fff;box-shadow:inset 3px 3px 0 rgba(0,0,0,.2)}
+.btn.gold{background:var(--gold);color:#1c1606}.btn[aria-pressed="true"]{background:var(--gold);color:#1c1606}
+main{max-width:900px;margin:0 auto;padding:16px 12px 80px}section[hidden]{display:none}
+:is(button,input,summary,a):focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+.progress{font-family:var(--pixel);font-size:1.05rem;flex:1;min-width:160px}
+.meter{height:10px;border:2px solid var(--frame);background:var(--panel);margin-top:4px}.meter i{display:block;height:100%;background:var(--matcha);width:0;transition:width .3s}
+.help{font-size:.92rem;color:var(--muted);margin:0 0 14px;max-width:66ch}
+h3{font-family:var(--pixel);font-weight:600;font-size:1.3rem;margin:20px 0 8px}
+/* tree */
+.treewrap{overflow:auto;max-height:75vh;border:3px solid var(--frame);background:var(--bg)}
+.tree{position:relative}.tree svg{position:absolute;inset:0;pointer-events:none}
+.edge{fill:none;stroke:var(--line);stroke-width:3;stroke-dasharray:4 4}.edge.on{stroke:var(--matcha);stroke-dasharray:none}
+.node{position:absolute;width:100px;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;padding:0;cursor:pointer;color:var(--ink);font-family:var(--pixel)}
+.frame{width:52px;height:52px;display:grid;place-items:center;font-size:26px;background:var(--panel);border:3px solid var(--frame);position:relative;box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),inset 4px 4px 0 rgba(255,255,255,.18)}
+.fr-goal .frame{border-radius:12px}.fr-challenge .frame{clip-path:polygon(12% 0,88% 0,100% 12%,100% 88%,88% 100%,12% 100%,0 88%,0 12%);border-width:4px}
+.node .lbl{font-size:11.5px;line-height:1.1;text-align:center;max-width:100px;background:var(--bg);padding:1px 3px}
+.node.locked .frame{background:var(--locked);color:var(--muted);font-size:22px}.node.locked .lbl{color:var(--muted)}
+.node.avail .frame{border-color:var(--matcha);animation:glow 1.8s ease-in-out infinite}
+.node.done .frame{background:var(--gold-bg);border-color:var(--gold)}
+.heartb{position:absolute;top:-7px;right:-7px;font-size:12px;line-height:1;color:var(--heart);background:var(--panel);border:2px solid var(--frame);padding:1px 2px}
+@keyframes glow{50%{box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 0 0 4px var(--matcha-soft)}}
+@media (prefers-reduced-motion:reduce){.node.avail .frame{animation:none;box-shadow:0 0 0 4px var(--matcha-soft)}}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;max-height:85vh;overflow:auto;background:var(--panel);border-top:4px solid var(--frame);padding:16px 16px calc(20px + env(safe-area-inset-bottom,0px));max-width:900px;margin:0 auto}
+.sheet h2{font-family:var(--pixel);font-weight:600;margin:0 0 2px;font-size:1.5rem;display:flex;align-items:center;gap:10px}
+.adv{font-size:.85rem;color:var(--muted);margin:0 0 8px}.warn{color:var(--heart);font-size:.9rem;margin:6px 0}.reward{color:var(--gold);font-size:.9rem;margin:6px 0;font-weight:700}
+.hint{border-left:4px solid var(--matcha);padding:6px 10px;background:var(--bg);margin:10px 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+/* recipe cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:10px}
+.rc{position:relative;background:var(--panel);border:3px solid var(--frame);padding:8px 10px;min-height:96px}
+.rc header{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.rc header b{font-size:.98rem;line-height:1.2}.st{font-family:var(--pixel);font-size:.75rem;background:var(--bg2);padding:1px 5px;white-space:nowrap}
+.rc .body{margin-top:6px;font-size:.88rem}
+.rc .veil{position:absolute;inset:30px 0 0;border:0;background:var(--panel);color:var(--matcha);font-family:var(--pixel);font-size:.95rem;cursor:pointer;
+  background-image:repeating-linear-gradient(45deg,transparent 0 8px,var(--bg2) 8px 10px)}
+.rc.open .veil,body.revealall .rc .veil{display:none}
+.grid{display:grid;gap:2px;width:max-content;max-width:100%}.grid.g3{grid-template-columns:repeat(3,76px)}.grid.g2{grid-template-columns:repeat(2,76px)}.grid.g1{grid-template-columns:76px}
+.grid span{background:var(--bg);border:2px solid var(--line);min-height:42px;padding:2px;font-size:.68rem;line-height:1.1;display:flex;align-items:center;justify-content:center;text-align:center;word-break:break-word}
+.grid span.empty{background:transparent;border-style:dashed;opacity:.5}
+.ing{margin:4px 0}.ing b{color:var(--matcha)}.meta{margin:4px 0;color:var(--muted);font-size:.84rem}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.search{width:100%;font:inherit;padding:8px 10px;border:3px solid var(--frame);background:var(--panel);color:var(--ink);margin-bottom:8px}
+label.ck{font-size:.9rem;display:inline-flex;gap:6px;align-items:center;margin-right:14px}
+.more{grid-column:1/-1;justify-self:center}
+.spoil{font:inherit;color:inherit;background:var(--matcha-soft);border:0;padding:0 4px;cursor:pointer;filter:blur(5px);transition:filter .2s;text-align:left}
+.spoil.shown,body.revealall .spoil{filter:none;background:transparent;cursor:auto}
+details{background:var(--panel);border:3px solid var(--frame);margin:0 0 10px}
+summary{font-family:var(--pixel);font-size:1.12rem;padding:10px 12px;cursor:pointer;list-style:none;display:flex;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";margin-left:auto;font-size:1.3rem}details[open] summary::after{content:"–"}
+summary small{font-family:var(--body);font-size:.8rem;color:var(--muted)}
+.dbody{padding:0 14px 12px}.dbody ul{padding-left:20px;margin:4px 0}.dbody li{margin:5px 0}
+.subtabs{display:flex;gap:4px;margin:0 0 12px;flex-wrap:wrap}.subtabs button{font-family:var(--pixel);font-size:1rem;border:3px solid var(--frame);background:var(--panel);color:var(--ink);padding:6px 12px;cursor:pointer}.subtabs button[aria-selected="true"]{background:var(--gold);color:#1c1606}.subpane[hidden]{display:none}.rpg{font-family:var(--pixel);font-size:.7rem;background:#6b4aa8;color:#fff;padding:0 4px;vertical-align:middle}.warn2{color:var(--heart)}.topbtns{display:flex;gap:8px;flex-wrap:wrap}.sep{width:12px}
+.ic{display:inline-block;width:20px;height:20px;background-size:contain;background-repeat:no-repeat;background-position:center;image-rendering:pixelated;vertical-align:-5px;margin-right:4px;flex:none}
+.ic.big{width:34px;height:34px;margin:0}.grid span .ic{width:26px;height:26px;margin:0 0 2px}.grid span{flex-direction:column;gap:1px}.grid span small{font-size:.62rem;line-height:1.05}
+.ii{display:inline-flex;align-items:center;margin:1px 6px 1px 0;white-space:nowrap}.unl{font-size:.82rem;color:var(--muted);margin:4px 0}.unl .ic{width:16px;height:16px;vertical-align:-3px}
+.rpg.pal{background:#a8862a}.rpg.arc{background:#3d7a3a}.rpg.ws{background:#2a6e8a}.rpg.se,.rpg.st{background:#555}
+.rc header b{display:flex;align-items:center;flex-wrap:wrap;gap:2px}
+.noreq{font-size:.8rem;color:var(--heart);font-weight:700;margin:2px 0 4px}.rc.na,tr.na{opacity:.6}.rc.na:hover,tr.na:hover{opacity:1}
+.disclaimer{background:var(--panel);border:3px solid var(--heart);padding:8px 12px;font-size:.9rem;margin:0 0 12px}.rc.nomod{opacity:.75;border-style:dashed}
+.skwrap{overflow:auto;border:3px solid var(--frame);background:#1f1b16;max-height:70vh}.sksvg{display:block}
+.skl{stroke:#4a4640;stroke-width:3}.skl.on{stroke:#d9a520}.skx{stroke:#b03030;stroke-width:2.5;stroke-dasharray:4 3}
+.skn{cursor:pointer}.skn rect,.skn circle{stroke-width:3;fill:#3a352d;stroke:#6b645a}.skn.k-root rect{fill:#5b4a8a}.skn.k-spell rect{fill:#7a4a2a}.skn.k-mod circle,.skn.k-passive circle{fill:#2f4a5a}
+.skn.avail rect,.skn.avail circle{stroke:#9cc45c}.skn.taken rect,.skn.taken circle{stroke:#ffd34e;stroke-width:4;filter:drop-shadow(0 0 4px #ffd34e)}.skn.excluded{opacity:.3}.skn.locked{opacity:.65}.skn:focus-visible{outline:none}.skn:focus-visible rect,.skn:focus-visible circle{stroke:#fff}
+.sklegend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted);margin:8px 0}.lg{display:inline-block;width:12px;height:12px;margin-right:4px;vertical-align:middle;border:2px solid #6b645a}.lg.root{background:#5b4a8a}.lg.spell{background:#7a4a2a}.lg.mod{background:#2f4a5a;border-radius:50%}.lg.stat{background:#3a352d;border-radius:50%}.lg.ex{border:0;border-top:2px dashed #b03030;height:0;width:16px}
+.skinfo{background:var(--panel);border:3px solid var(--frame);padding:10px 12px;margin:8px 0 14px}.skinfo h4{font-family:var(--pixel);font-size:1.2rem;margin:0}
+.trades{list-style:none;padding:0!important}.lvl{font-family:var(--pixel);font-size:.8rem;background:var(--bg2);padding:0 5px;margin-right:4px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+.tablewrap{overflow-x:auto;border:3px solid var(--frame);background:var(--panel);margin-bottom:14px}.tablewrap.inner{border:0;border-top:2px solid var(--line);margin:0}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-family:var(--pixel);font-weight:400;background:var(--bg2)}
+.gl{display:grid;grid-template-columns:1fr 1fr;border:3px solid var(--frame);background:var(--panel)}
+.gl div{padding:6px 10px;border-bottom:1px solid var(--line);font-size:.92rem}.gl div:nth-child(odd){color:var(--muted)}.gl div:nth-child(even){font-weight:700}
+footer{max-width:900px;margin:0 auto;padding:0 16px 30px;font-size:.82rem;color:var(--muted)}footer a{color:var(--matcha)}
+</style>
+</head>
+<body>
+<header class="top"><div><h1>Matcha Flavoured</h1>
+<p class="sub">Guide complet généré à partir du datapack et du resource pack 1.12.2, plus les mods Wizards, Paladins, Archers, Spell Engine, Spell Power, Skill Tree (série RPG) et Waystones : succès, recettes, cuisine, équipement, magie, échanges et pêche. Tout ce qui pourrait te spoiler reste caché jusqu'à ce que tu le touches.</p></div>
+<div class="topbtns"><button class="btn" id="langBtn">Noms : FR</button><button class="btn" id="revealAll" aria-pressed="false">Tout dévoiler</button></div></header>
+<nav><div class="tabs" role="tablist">
+<button role="tab" aria-selected="true" data-tab="tree">Progression</button>
+<button role="tab" aria-selected="false" data-tab="crafts">Recettes</button>
+<button role="tab" aria-selected="false" data-tab="food">Cuisine</button>
+<button role="tab" aria-selected="false" data-tab="equip">Équipement</button>
+<button role="tab" aria-selected="false" data-tab="magic">Enchantements</button>
+<button role="tab" aria-selected="false" data-tab="rpg">Magie RPG</button>
+<button role="tab" aria-selected="false" data-tab="skills">Compétences</button>
+<button role="tab" aria-selected="false" data-tab="ws">Waystones</button>
+<button role="tab" aria-selected="false" data-tab="trade">Échanges</button>
+<button role="tab" aria-selected="false" data-tab="fish">Pêche & mobs</button>
+<button role="tab" aria-selected="false" data-tab="rules">Règles</button>
+<button role="tab" aria-selected="false" data-tab="names">Noms</button>
+</div></nav>
+<main>
+<section id="tree">
+ <div class="bar"><div class="progress"><span id="count">0</span> succès obtenus<div class="meter"><i id="meterfill"></i></div></div>
+ <button class="btn" id="spoilAll">Révéler tout l'arbre</button><button class="btn" id="reset">Recommencer</button></div>
+ <p class="help">L'arbre reprend les vrais succès du pack. Il se lit de gauche à droite et défile dans les deux sens. Touche une étape au bord vert pour un indice ; la solution (avec les recettes exactes) reste cachée tant que tu ne la demandes pas. Coche-la pour révéler la suite. Le <span style="color:var(--heart)">♥</span> marque les 7 jalons qui baissent ton minimum de cœurs. Les cadres arrondis sont des objectifs, les cadres biseautés des défis.</p>
+ <div class="treewrap"><div class="tree" id="treeEl"><svg id="edges"></svg></div></div>
+</section>
+<section id="crafts" hidden>
+ <p class="help">Toutes les recettes du pack, des mods RPG et de Waystones (badges colorés). Chaque carte est voilée : touche-la pour voir les ingrédients. Le bouton « Noms » en haut bascule les noms d'objets entre français et anglais, comme dans ton jeu.</p>
+ <input class="search" id="q" type="search" placeholder="Chercher un objet (ex. kiln, steel, sack…)" aria-label="Chercher une recette">
+ <div class="filters" id="stations"></div>
+ <p><label class="ck"><input type="checkbox" id="ingr"> Chercher aussi dans les ingrédients</label><label class="ck"><input type="checkbox" id="hideNA"> Masquer les recettes impossibles (mod manquant)</label><label class="ck"><input type="checkbox" id="deco"> Inclure déco et variantes (dalles, couleurs, tailleur de pierre…)</label></p>
+ <p class="help">⚠️ Les recettes grisées demandent un mod que tu n'as pas (BetterEnd, BetterNether ou The Aether) : elles existent dans les fichiers mais ne seront pas craftables dans ta partie.</p>
+ <p class="help" id="craftCount"></p>
+ <div class="cards" id="craftList"></div>
+</section>
+<section id="food" hidden>
+ <p class="help">Plus de faim ni de régénération naturelle : la nourriture soigne (❤ = cœurs rendus) et remplace les potions. Cuire un ingrédient réveille son effet caché ; conserves et repas le font durer plus longtemps. Effets et ingrédients sont floutés : touche pour révéler.</p>
+ <input class="search" id="fq" type="search" placeholder="Chercher un plat ou un effet" aria-label="Chercher un plat">
+ <p><label class="ck"><input type="checkbox" id="feff"> Seulement les plats avec un effet</label></p>
+ <div class="tablewrap"><table><thead><tr><th>Plat</th><th>Soin</th><th>Effet</th><th>Recette</th></tr></thead><tbody id="foodBody"></tbody></table></div>
+</section>
+<section id="equip" hidden>
+ <p class="help">Base + alliage à la table de forgeron (+ modèle de forge pour les hybrides et les claymores). Chaque matériau a ses effets intégrés, floutés. Les objets des mods RPG ont un badge de classe : leurs stats sont définies dans le code du mod, donc visibles seulement en jeu. Les lignes grisées marquées ⚠️ demandent un mod que tu n'as pas installé : ces objets ne sont pas craftables dans ta partie.</p>
+ <p class="disclaimer">⚠️ <b>Objets non craftables :</b> certains objets des mods RPG (aeternium, rubis du Nether, cristal, smaragdant, Valkyrie…) demandent des mods que tu n'as pas (BetterEnd, BetterNether, The Aether). Ils sont marqués ⚠️ et ne peuvent pas être fabriqués dans ta partie.</p>
+ <div class="subtabs" role="tablist"><button aria-selected="true" data-sub="tool">⛏️ Outils</button><button aria-selected="false" data-sub="weapon">⚔️ Armes</button><button aria-selected="false" data-sub="armor">🛡️ Armures</button></div>
+ <div class="subpane" data-pane="tool" id="eq_tool"></div>
+ <div class="subpane" data-pane="weapon" id="eq_weapon" hidden></div>
+ <div class="subpane" data-pane="armor" id="eq_armor" hidden></div>
+</section>
+<section id="magic" hidden>
+ <p class="help">La table d'enchantement n'existe plus. On fabrique des « blessings » à partir d'un Hell-Bound Book, puis on les applique à l'enclume (coût fixe d'1 niveau par enchantement, réparation sans limite).</p>
+ <h3>Nouveaux enchantements</h3>
+ <div class="tablewrap"><table><thead><tr><th>Nom</th><th>Sur</th><th>Effet</th></tr></thead><tbody id="customEn"></tbody></table></div>
+ <p class="help">Changements notables : Fortune est plafonné au niveau I (au-delà, il faut des outils en electrum). Les enchantements vanilla gardent leurs niveaux habituels.</p>
+ <h3>Prières (blessings)</h3>
+ <div class="cards" id="blessList"></div>
+ <h3>Enchantements de puissance des sorts (Spell Power)</h3>
+ <p class="help">Ils augmentent tes attributs de magie. Les bonus d'école (Feu solaire, Âme-givre, Énergisant) vont sur l'armure, les autres sur l'arme de sort. Normalement trouvés à la table d'enchantement, absente de Matcha : il faudra les trouver en butin ou en échange, si le jeu en propose.</p>
+ <div class="tablewrap"><table><thead><tr><th>Nom</th><th>Sur</th><th>Effet</th></tr></thead><tbody id="spPow"></tbody></table></div>
+ <h3>Enchantement Spell Engine</h3>
+ <div class="tablewrap"><table><thead><tr><th>Nom</th><th>Sur</th><th>Effet</th></tr></thead><tbody id="spellInf"></tbody></table></div>
+</section>
+<section id="rpg" hidden>
+ <p class="help">La série RPG ajoute trois classes : le Sorcier (Arcanes, Feu, Givre), le Paladin et le Prêtre (magie sacrée, soins), et l'Archer (arcs, arbalètes, lances). Les armes de classe lancent un sort de base ; les autres sorts s'apprennent en reliant un tome à la table de liaison (Spell Engine), contre de l'XP.</p>
+ <h3>Avec Matcha Flavoured, attention</h3>
+ <ul class="help">
+  <li>Les recettes des mods utilisent des objets vanilla que Matcha renomme : poudre de blaze → <b>Estus brut</b>, ender pearl → <b>Vide stable</b>, éclat de prismarine → <b>Argent brut</b>, brique du Nether → <b>Brique infernale</b>, etc. Les recettes ci-dessous affichent les noms de Matcha.</li>
+  <li>Les versions « Netherite » se forgent avec de l'<b>Alliage d'adamant</b> et le <b>Modèle de forge</b> de Matcha (fer, acier et ardoise).</li>
+  <li>Le Marchand-Sorcier, le Moine (Paladins) et l'Artisan archer se paient en émeraudes, donc en <b>oboles</b>, rares ici. Ils vivent normalement dans les villages, que Matcha rend abandonnés et plus rares : à vérifier dans ton monde.</li>
+  <li>Matcha supprime les outils en pierre vanilla, mais pas les armes en pierre du mod Paladins.</li>
+  <li>Les objets en rubis, cristal, aeternium ou « Valkyrie/Aether » demandent d'autres mods (BetterNether, BetterEnd, The Aether) : ils ne sont pas craftables chez toi.</li>
+ </ul>
+ <p class="disclaimer">⚠️ <b>Objets non craftables :</b> certains objets des mods RPG (aeternium, rubis du Nether, cristal, smaragdant, Valkyrie…) demandent des mods que tu n'as pas (BetterEnd, BetterNether, The Aether). Ils sont marqués ⚠️ et ne peuvent pas être fabriqués dans ta partie.</p>
+ <h3>Table de liaison des sorts</h3>
+ <p class="help" id="bindTxt"></p>
+ <div class="cards" id="bindCard"></div>
+ <h3>Classes</h3>
+ <p class="help">⚠️ Les objets grisés demandent un mod absent de ton modpack (BetterEnd, BetterNether ou The Aether) : tu ne pourras pas les fabriquer.</p>
+ <div id="rpgBody"></div>
+ <h3>Effets magiques</h3>
+ <ul class="help" id="wizEff"></ul>
+</section>
+<section id="ws" hidden>
+ <p class="help">Le mod Waystones ajoute des pierres de téléportation. Active une waystone en l'utilisant, puis téléporte-toi vers n'importe quelle waystone activée depuis une autre waystone, avec un parchemin ou une pierre de saut. Chaque recette se débloque dans ton livre de recettes dès que tu ramasses certains objets (indiqués en clair). Les recettes sont voilées comme ailleurs.</p>
+ <ul class="help">
+  <li><b>Waystone</b> : point de téléportation. Toutes les variantes font la même chose, seul le style change.</li>
+  <li><b>Sharestone</b> : relie toutes les sharestones de la même couleur entre elles, sans activation préalable.</li>
+  <li><b>Portstone</b> : permet de partir vers une waystone, mais on ne peut pas s'y téléporter.</li>
+  <li><b>Plaque de téléportation (warp plate)</b> : deux plaques reliées par un éclat qui s'harmonise. On peut y ajouter des objets « modificateurs ».</li>
+  <li>Avec Matcha, la pierre de saut demande du <b>Vide stable</b> (ender pearl), que chaque enderman tué lâche à coup sûr : c'est plutôt facile à obtenir.</li>
+ </ul>
+ <div id="wsBody"></div>
+ <h3>Waystones sauvages</h3>
+ <p class="help">Des waystones apparaissent naturellement dans le monde ; leur style dépend du biome. Elles peuvent aussi apparaître dans les villages, que Matcha rend plus rares.</p>
+ <div class="tablewrap"><table><thead><tr><th>Waystone</th><th>Biomes</th></tr></thead><tbody id="wsBiomes"></tbody></table></div>
+ <h3>Modificateurs de la plaque de téléportation</h3>
+ <p class="help">Place ces objets dans la plaque pour modifier les téléportations. Attention, avec Matcha : la plupart des plats sont techniquement des « pommes de terre empoisonnées », ils compteraient donc probablement comme modificateur « Empoisonne ».</p>
+ <div class="tablewrap"><table><thead><tr><th>Objet</th><th>Effet</th></tr></thead><tbody id="wsMods"></tbody></table></div>
+</section>
+<section id="skills" hidden>
+ <p class="help">Le mod Skill Tree RPGs ajoute deux arbres de compétences. Tu gagnes de l'expérience de compétence en tuant des mobs (XP lâchée + PV max ÷ 40), avec un anti-farm de 15 kills par chunk toutes les 5 minutes. Les branches affichées correspondent à tes mods : Sorcier (Arcanes, Feu, Givre), Paladin (Paladin, Prêtre), Archer, plus les spécialisations d'armes communes. La branche Voleur (mod Rogues) est masquée. Le planificateur te permet de préparer ton build : touche un nœud, puis « Prendre ».</p>
+ <div class="subtabs" role="tablist"><button aria-selected="true" data-sub="class_skills">🧙 Classe (13 points)</button><button aria-selected="false" data-sub="weapon_skills">⚔️ Armes (6 points)</button></div>
+ <div class="subpane" data-pane="class_skills" id="sk_class_skills"></div>
+ <div class="subpane" data-pane="weapon_skills" id="sk_weapon_skills" hidden></div>
+ <ul class="help">
+  <li>Arbre de classe : tu ne peux choisir qu'<b>une seule racine</b> parmi toutes les voies (Arcanes, Feu, Givre, Paladin, Prêtre, Archer).</li>
+  <li>Les traits pointillés rouges relient des choix exclusifs : en prendre un bloque l'autre.</li>
+  <li>Chaque niveau demande plus d'XP que le précédent (jusqu'à 20 000 par niveau).</li>
+ </ul>
+ <h3>Réinitialiser ses compétences</h3>
+ <p class="help" id="orbTxt"></p>
+ <div class="cards" id="orbCard"></div>
+</section>
+<section id="trade" hidden>
+ <p class="help">Les émeraudes sont devenues des obols. La plupart des échanges sont utilisables 999 fois. Quatre métiers changent de nom (indiqué entre parenthèses). Touche un échange pour le voir.</p>
+ <div id="tradeBody"></div>
+</section>
+<section id="fish" hidden>
+ <h3>Pêche</h3>
+ <p class="help">Les prises dépendent du type d'eau et du climat du biome. ★ = rareté (1 à 4). Le pêcheur rachète les poissons contre des obols.</p>
+ <div class="tablewrap"><table><thead><tr><th>Où</th><th>Prises possibles</th></tr></thead><tbody id="fishBody"></tbody></table></div>
+ <h3>Butin des mobs</h3>
+ <p class="help">Ce que chaque créature peut lâcher quand tu la tues (liste brute des tables de butin modifiées).</p>
+ <div class="tablewrap"><table><thead><tr><th>Mob</th><th>Butin</th></tr></thead><tbody id="mobBody"></tbody></table></div>
+</section>
+<section id="rules" hidden>
+ <details open><summary>❤️ Santé, faim et mort</summary><div class="dbody"><ul>
+ <li><b>Plus de faim</b> : la barre est cachée, tu peux toujours sprinter.</li>
+ <li><b>Pas de régénération naturelle</b> : tu te soignes en mangeant, en ramassant du raw Estus, près d'une warding stone ou avec certains équipements.</li>
+ <li><b>Mort</b> : tu gardes inventaire et XP, mais tu perds 1 cœur max (2 en Difficile). Départ à 10 cœurs, maximum 30 grâce aux crystal hearts.</li>
+ <li><b>Minimum de cœurs</b> : 10 au départ, −1 à chacun des 7 jalons ♥ : <button class="spoil">premier lingot de cuivre, premier lingot de fer, premier diamant, entrer en Hell, trouver la forteresse, obtenir l'adamant, obtenir l'electrum</button>. En Facile, jamais sous 10.</li>
+ </ul></div></details>
+ <details><summary>🧟 Mobs</summary><div class="dbody"><ul>
+ <li>À ciel ouvert, seuls les morts-vivants apparaissent. Zombies rapides mais fragiles, husks lents et blindés dans tous les biomes.</li>
+ <li>Pas de phantoms. Les zombies lâchent du Tattered Leather, les morts-vivants parfois du raw Estus. Les mobs de spawners ne lâchent rien.</li>
+ <li>Chaque enderman tué lâche un Stable Void (l'ender pearl). Les spawners cassés donnent un fragment divin.</li>
+ <li><button class="spoil">Après la première mort du dragon, les monstres communs ne réapparaissent plus en surface.</button></li>
+ </ul></div></details>
+ <details><summary>🌙 Monde</summary><div class="dbody"><ul>
+ <li>Une journée dure 1 heure. On peut dormir à toute heure : le temps accélère.</li>
+ <li>Obscurité totale dans l'Overworld (désactivable dans le datapack). Le Nether s'appelle Hell.</li>
+ <li>Villages abandonnés et plus rares, nouvelles abbayes et papal outposts. Presque tous les coffres ont un nouveau butin.</li>
+ <li>L'eau des biomes gelés fait mal sans Frost Protection sur le plastron.</li>
+ </ul></div></details>
+ <details><summary>⚙️ Installation</summary><div class="dbody"><ul>
+ <li>À utiliser sur un nouveau monde. Datapack dans les datapacks du monde, resource pack (fichier séparé depuis la 1.12.2) dans les packs de ressources.</li>
+ <li>Message « Matcha Flavoured is now loaded » au chargement = tout va bien. <code>/trigger update_item</code> met à jour les vieux objets.</li>
+ </ul></div></details>
+</section>
+<section id="names" hidden>
+ <p class="help">Beaucoup d'objets vanilla ont été renommés. Pratique quand une recette parle d'un truc inconnu.</p>
+ <div class="gl" id="glossary"></div>
+</section>
+</main>
+<footer>Généré à partir du datapack et du resource pack Matcha Flavoured 1.12.2 de Klei Wright (CC BY-NC-SA 4.0), et des mods Wizards 3.1.3, Spell Engine 1.10.9, Spell Power 1.6.2, Skill Tree RPGs 1.6.2, Paladins 3.1.3, Archers 3.1.3 et Waystones 26.2.0.12. Pour aller plus loin : la <a href="https://www.youtube.com/watch?v=zyRH8W58fRI&amp;t=1007s" target="_blank" rel="noopener">vidéo de présentation de Matcha Flavoured par Klei Wright (YouTube)</a> et le <a href="https://matchaflavoured.wiki/" target="_blank" rel="noopener">wiki Matcha Flavoured</a>. Textures : resource pack Matcha Flavoured, mods et Minecraft 26.2. Quelques objets vanilla rarement utilisés (surtout de la déco) restent en anglais.</footer>
+<div id="scrim" class="scrim" hidden></div>
+<div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden></div>
+<script>window.__DATA__=/*DATA*/null;</script>
+<script>/*ADV*/</script>
+<script>/*APP*/
+</script>
+</body></html>

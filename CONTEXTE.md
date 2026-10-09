@@ -42,7 +42,7 @@ Les jars ne sont pas dans le dépôt (exclus par `.gitignore`). Liens utiles : v
 ## Points de compatibilité à garder en tête (Matcha + mods)
 
 - Matcha renomme des objets vanilla, et les recettes des mods héritent de ces noms : poudre de blaze → Estus brut, ender pearl → Vide stable, éclat de prismarine → Argent brut, netherite → Adamant, émeraude → Obole…
-- Pas de table d'enchantement dans Matcha, donc les enchantements Spell Power et Spell Infinity ne s'obtiennent probablement qu'en butin.
+- La table d'enchantement existe encore dans Matcha mais n'est plus craftable ni au cœur du jeu (les prières à l'enclume la remplacent), donc les enchantements Spell Power et Spell Infinity s'obtiennent surtout en butin.
 - Les villages sont abandonnés et rares avec Matcha : Marchand-Sorcier, Moine, Artisan archer et waystones de village sont à vérifier en jeu.
 - Les plats de Matcha sont des « pommes de terre empoisonnées » techniquement, ils compteraient probablement comme modificateur « Empoisonne » sur une plaque de téléportation (non vérifié).
 - 18 recettes RPG demandent des mods absents (BetterEnd, BetterNether, The Aether) : elles sont marquées ⚠️ et grisées.

@@ -13,7 +13,7 @@ obtain_iron_ingot:["⚙️","Fer","Le haut-fourneau ouvre enfin la porte au fer.
 obtain_carbon_rich_iron:["⚫","Fer carburé","Le fer seul ne suffit plus pour la forge. Ajoute du carbone.",["Carbon-Rich Iron"],""],
 obtain_steel:["🔩","Acier","Repasse ton fer carburé dans le feu le plus chaud.",["Steel Alloy"],""],
 obtain_smithing_table:["🔨","Table de forgeron","L'acier sert d'abord à construire ton atelier.",["Smithing Table"],"Les alliages s'appliquent ici sur l'équipement de base, sans template (sauf hybrides et claymores)."],
-obtain_avil:["⚒️","Enclume","Elle aussi demande de l'acier.",["Anvil"],"Réparer n'a pas de plafond et ne coûte pas d'XP. C'est aussi là que tu appliques les blessings."],
+obtain_avil:["⚒️","Enclume","Elle aussi demande de l'acier.",["Anvil"],"Réparer n'a pas de plafond (jamais « Trop cher ! ») et coûte seulement 1 niveau par lingot. C'est aussi là que tu appliques les blessings."],
 obtain_smithing_upgrade:["📜","Template d'amélioration","Les outils hybrides et les claymores en ont besoin pour passer en alliage.",["Netherite Upgrade Smithing Template"],""],
 upgrade_mattock:["🛠️","Hybride en alliage","Ton mattock ou ta dolabra mérite mieux que du cuivre.",[],"Base + alliage + template d'amélioration à la table de forgeron."],
 obtain_steel_tool:["🗡️","Outil en acier","L'acier s'applique sur le fer.",[],"Acier = gros recul et protection contre les explosions, très durable."],

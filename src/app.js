@@ -142,6 +142,7 @@ function howAnvil(){return flow([
   fstep("🔧 Réparer","objet abîmé + lingot de son métal de base","Environ un quart de la durabilité par lingot, pour 1 niveau d'XP par lingot. Matcha remet à zéro le « coût de réparation » des objets de ton inventaire : jamais de « Trop cher ! », on peut réparer à l'infini. Le métal de chaque objet est indiqué dans l'onglet Équipement."),
   fstep("📜 Enchanter","objet + prière (livre)","C'est la façon normale d'enchanter : la table d'enchantement existe encore, mais elle n'est plus craftable ni au cœur du jeu. Depuis un livre, chaque niveau d'enchantement coûte 1 niveau d'XP (ex. Prière de Yama sur une épée : seule Aura de feu s'applique, donc 1 niveau)."),
   fstep("🔗 Combiner","deux objets identiques","Comme en vanilla : additionne la durabilité et fusionne les enchantements."),
+  fstep("➕ Additionner les enchantements","objet + prière, plusieurs fois (ou prière + prière)","Oui, on peut les cumuler : chaque passage à l'enclume ajoute les enchantements compatibles. Deux fois le même niveau donne le niveau au-dessus (ex. Solidité II + Solidité II → III), jusqu'au maximum de l'enchantement ; deux niveaux différents gardent le plus haut. Comme Matcha remet le coût de réparation à zéro, cumuler ne devient pas de plus en plus cher. Incompatibles entre eux : les dégâts (Tranchant, Châtiment, Fléau des arthropodes, Densité, Brèche et, dans Matcha, Empalement), les protections d'armure, Fortune / Toucher de soie, Agilité aquatique / Semelles givrantes, Tir multiple / Perforation, Impulsion / Loyauté et Canalisation, et les effets intégrés des armes et armures en alliage (un seul par objet)."),
   fstep("✏️ Renommer","objet + nouveau nom","1 niveau d'XP."),
   fstep("⚠️ Usure","","Comme en vanilla, l'enclume s'abîme à l'usage (ébréchée, puis endommagée, puis cassée) : garde de l'acier pour en refaire une.",null,1)]);}
 function howBind(){
@@ -156,7 +157,7 @@ function renderMagic(){
   $("#customEn").innerHTML=CUSTOM_EN.map(c=>`<tr><td><b>${esc(enName(c[0]))}</b></td><td>${c[1]}</td><td>${c[2]}</td></tr>`).join("");
   $("#blessList").innerHTML=RECS.filter(r=>r.cat==="blessing").map(r=>card(r,{label:"Voir la recette",top:blessFx(r)})).join("");
   $("#howBless").innerHTML=howBless();$("#howAnvil").innerHTML=howAnvil();$("#howBind").innerHTML=$("#howBind2").innerHTML=howBind();
-  const si=D.spellinf;$("#spellInf").innerHTML=`<tr><td><b>${esc(pick(si.n))}</b> <span class="rpg">Spell Engine</span></td><td>Bâtons, baguettes, livres de sorts</td><td>${esc(pick(si.d))} (avec les runes). Normalement obtenu à la table d'enchantement… qui n'est plus craftable dans Matcha Flavoured : surtout via du butin, s'il apparaît.</td></tr>`;
+  const si=D.spellinf;$("#spellInf").innerHTML=`<tr><td><b>${esc(pick(si.n))}</b> <span class="rpg">Spell Engine</span></td><td>Bâtons, baguettes, livres de sorts</td><td>${esc(pick(si.d))} (avec les runes). Possible à la table d'enchantement, mais comme elle n'est plus craftable dans Matcha Flavoured, tu as plus de chances de le trouver ailleurs (butin).</td></tr>`;
 }
 
 /* RPG */

@@ -2,6 +2,14 @@
 
 All notable changes to the Matcha RPG Wiki. Versions follow [semantic versioning](https://semver.org/) (see README).
 
+## [1.2.0] - 2026-10-09
+
+### Added
+- Anvil memo: how to stack enchantments (same level → next level, highest level kept, incompatible groups from the Matcha datapack).
+
+### Changed
+- Spell Infinity: can come from the enchanting table, but more likely found elsewhere since the table is no longer craftable.
+
 ## [1.1.1] - 2026-10-09
 
 ### Fixed

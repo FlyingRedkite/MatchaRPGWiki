@@ -2,6 +2,11 @@
 
 All notable changes to the Matcha RPG Wiki. Versions follow [semantic versioning](https://semver.org/) (see README).
 
+## [1.1.1] - 2026-10-09
+
+### Fixed
+- The enchanting table still exists in Matcha Flavoured: it is just no longer craftable nor central to the game. Wording updated everywhere.
+
 ## [1.1.0] - 2026-10-09
 
 ### Added

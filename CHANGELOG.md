@@ -2,6 +2,12 @@
 
 All notable changes to the Matcha RPG Wiki. Versions follow [semantic versioning](https://semver.org/) (see README).
 
+## [1.2.1] - 2026-10-11
+
+### Changed
+- Source code formatted for readability (Prettier for JS/HTML/CSS, Black for Python), CSS moved to `src/style.css`, explanatory headers in each file. The rendered page is unchanged.
+- `build.py` stops with an error if a placeholder is missing in `shell.html`.
+
 ## [1.2.0] - 2026-10-09
 
 ### Added
